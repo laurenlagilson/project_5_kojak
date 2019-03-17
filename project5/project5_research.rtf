@@ -1,0 +1,204 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww7380\viewh14860\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Project 5 - Research:\
+\
+- H-1B visa - allows employers to temporarily employ foreign workers in speciality occupations. \
+- Requires the application of specialised knowledge and a bachelor\'92s degree or the equivalent of work experience. \
+- Laws limit number of H-1B visas that are issued each year [MAYBE USE THIS AS DATA]\
+\
+https://redbus2us.com/h1b-visa-cap-reach-dates-history-graphs-uscis-data/\
+\
+\
+65K and additional 20,000 visas for graduate degree from US academic institution - no change in recent 5-10 years\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul \ulc0 Kaggle initial dataset:
+\f0\b0 \ulnone \
+https://www.kaggle.com/jonamjar/green-card-h1b-20142018\
+https://www.foreignlaborcert.doleta.gov/performancedata.cfm\
+\
+\
+
+\f1\b \ul Average times of petition from 2015:
+\f0\b0 \ulnone \
+https://egov.uscis.gov/processing-times/historic-pt\
+\
+\
+
+\f1\b \ul Fiscal Year:
+\f0\b0 \ulnone \
+October \'97> September of following year \
+E.g. FY 2015 = \
+October 2014 - September 2015\
+\
+
+\f1\b GDP:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 http://wdi.worldbank.org/table/WV.1\
+https://databank.worldbank.org/data/reports.aspx?source=2&series=NY.GDP.MKTP.KD.ZG&country=\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Kaggle good EDA:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 https://www.kaggle.com/ash316/h1b-the-gateway-to-usa\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Wage library:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 http://www.flcdatacenter.com/CaseH1B.aspx\
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 PERMENANT RES:\
+CLEANING ON IMPORT: 
+\f0\b0 (was 158 columns)
+\f1\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 - Remove whitespace - YEP\
+- Make everything lowercase = YEP\
+- Add fiscal year column - YEP\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 CLEANING LATER:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 Combine columns:\
+- Case number/no\
+- Country of citizenship/citzenship \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+LATER:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 - Extract letter from case number - represents national	 processing centre\
+- Reduce employer details down to name/city or state \
+- no employer? Assume unemployed?\
+- Change visa class nulls to N/A\
+- Remove application type\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 EXTRA INFO: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 -https://www.dhs.gov/immigration-statistics/lawful-permanent-residents\
+\
+https://databank.worldbank.org/data/reports.aspx?source=2&series=NY.GDP.MKTP.CD&country=USA (economic data)\
+\
+\
+Columns to keep:\
+- fiscal_year CHECK\
+- case_number (to extract letter) CHECK\
+- case_status (Y to predict) - Take Certified-Expired as Certified - take out Withdrawn? CHECK\
+- class_of_admission (change nulls to not applicable?) need to clean format - e.g. h1-b h1b etc (Take out \'91-\'91?) CHECK\
+- country_of_citizenship  CHECK\
+- citizenship_same_as_birth \{combined\}  CHECK\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 - employer_name COME BACK TO\
+- employer_city (take out and keep state) COME BACK TO\
+- employer_state COME BACK TO
+\f0\b0 \
+- pw_amount_9089 - pw_unit_of_pay Combined CHECK\
+- pw_soc_code CHECK\
+- us_economic_sector (NaNs = unclassified) CHECK\
+
+\f1\b - job_info_major (NaNs as None?) COME BACK TO
+\f0\b0 \
+- preparer_info_emp_completed (NaNs as no?) CHECK\
+\pard\pardeftab720\sl320\partightenfactor0
+\cf2 \cb3 \expnd0\expndtw0\kerning0
+- pw_job_title_9089 - NOPE\
+- decision_date - reduce to month and year? CHECK\
+- foreign_worker_info_education CHECK\
+- job_info_training CHECK\
+- ri_layoff_in_past_six_months (Null - assumed no) CHECK\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f1\b \cf2 - 2007_naics_us_title - (nans assume unclassified)
+\f0\b0 \
+- fw_ownership_interst (nans assume no) CHECK\
+- employer_num_employees - (nans take mean? - change to business size) CHECK\
+- fw_info_req_experience - CHECK\
+- job in different state?\
+ \'97 foreign_worker_info_state [State of foreign worker] CHECK\
+ \'97 like country of citizenship - figure out if job_info_work_state is the same CHECK\
+\
+\
+Country of birth different to one a citizen - COMBINE COLS\
+\
+\
+Need to clean state data! - Put all into two letter codes?\
+\
+\
+Columns to work off:\
+- decision date \
+- country of citizenship  \
+\
+\
+
+\f1\b \ul WORK FLOW: \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f0\b0 \cf2 \ulnone Import excel files:\
+- Add fiscal year column\
+- Clean column names \
+- Concat dataframes \
+\
+- Clean column wanted and then append to new lists to create new dataframe.\
+\
+1- case outcome - categorical 0 or 1\
+2- fiscal year - categorical years\
+3- processing centre - categorical A or C\
+4- class of admission - categorical visa class\
+5- country of citizenship - categorical\
+6- citizenship same as birth - categorical Y or N \
+7- tax bracket [change to salary] - numerical\
+8- pw soc code - categorical \
+9- us economic sector - categorical \
+10- preparer info employer completed - Y or N\
+11- decision code - change to month? Categorical\
+12- fw info education - categorical - degree\'92s\
+13- job info training - categorical - Y or N\
+14- layoff in past 6 months - categorical - Y or N\
+15- fw ownership interest - categorical - Y or N\
+16- business size [change to num of employees] - numeric\
+17- fw state abv - categorical - state \
+18- job same state - categorical - Y or N\
+19- fw info req experience	- categorical - Y or N\
+\
+- Green Cards for employment based residency is limited each year to 140,000\
+\
+- US Immigration Trends\
+https://www.migrationpolicy.org/programs/data-hub/us-immigration-trends\
+\
+\
+- could add political party at time of decision\
+\pard\tx1005\pardeftab720\sl320\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl320\partightenfactor0
+\cf2  Republican <200901\
+200901 < Democratic < 201701\
+201701 < Republican}
